@@ -7,6 +7,6 @@ public class Home {
 
     @FXML
     private void switchToSecondary() throws IOException {
-        Hadirgo.setRoot("secondary");
+        App.setRoot("secondary");
     }
 }

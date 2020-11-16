@@ -7,6 +7,6 @@ public class MenuLogin {
 
     @FXML
     private void switchToPrimary() throws IOException {
-        Hadirgo.setRoot("primary");
+        App.setRoot("FormLogin");
     }
 }
