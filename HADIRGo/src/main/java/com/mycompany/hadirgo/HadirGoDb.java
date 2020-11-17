@@ -18,18 +18,22 @@ public class HadirGoDb {
     private static final String URL = "jdbc:sqlite:admin.db";
     
     //membuat tabel baru jika belum ada
+    //isAdmin adalah state yang digunakan untuk membedakan akun dosen dan admin
+    //0 = dosen
+    //1 = admin
     private static final String CREATE_TABLE_SQL = "CREATE TABLE IF NOT EXISTS account (\n"
                                                 + " id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,\n"
                                                 + " username TEXT NOT NULL UNIQUE,\n"
-                                                + " password TEXT NOT NULL\n"
+                                                + " password TEXT NOT NULL,\n"
+                                                + " isAdmin BIT NOT NULL"
                                                 + ");";
     
     //insert data dosen dan admin untuk login
-    //username dan password akun dosen adalah dosen dan dosen secara berturut2
-    //username dan password akun admin juga sama, admin dan admin
+    //username dan password akun dosen = dosen, dosen
+    //akun admin = admin, admin 
     private static final String INSERT_ACCOUNT_SQL = "INSERT INTO account (username, password)\n"
-                                                     + " VALUES('admin', 'admin'),"
-                                                     + " ('dosen', 'dosen');";
+                                                     + " VALUES('admin', 'admin', 1),"
+                                                     + " ('dosen', 'dosen', 0);";
     
     //query untuk validasi akun waktu login di fungsi validate()
     private static final String VALIDATE_QUERY = "SELECT * FROM account WHERE \n"
@@ -45,6 +49,7 @@ public class HadirGoDb {
             Class.forName("org.sqlite.JDBC");
             Connection conn = DriverManager.getConnection(URL);
             Statement statement = conn.createStatement();
+            statement.execute(CREATE_TABLE_SQL);
             statement.execute(INSERT_ACCOUNT_SQL);
             isAccountInserted = true;
             
