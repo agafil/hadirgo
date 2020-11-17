@@ -16,7 +16,7 @@ import javafx.scene.control.Alert.*;
 import javafx.scene.control.TextField;
 import java.lang.reflect.Method;
 
-public class MenuLogin extends HadirGoDb{
+public class MenuLogin{
     private String user;
     private String pwd;
     private boolean status;
