@@ -8,29 +8,41 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+<?import javafx.scene.control.*?>
 
-<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.hadirgo.Home">
   <children>
-    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="524.0" prefWidth="867.0" VBox.vgrow="ALWAYS">
+    <AnchorPane fx:id="home" maxHeight="-1.0" maxWidth="-1.0" prefHeight="524.0" prefWidth="867.0" VBox.vgrow="ALWAYS">
       <children>
-            <ImageView fitHeight="239.0" fitWidth="272.0" layoutX="201.0" layoutY="47.0" preserveRatio="true">
+            <ImageView fitHeight="430.0" fitWidth="640.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@hadirgo!.png" />
+                  <Image url="@image(1).png" />
                </image>
             </ImageView>
-            <TextArea layoutX="3.0" layoutY="333.0" prefHeight="64.0" prefWidth="316.0" promptText="adeqe" text="71180284 / Akira Rafhael Janson P&#10;71180276 / David Setiawan Widodo&#10;71180266 / Charles Condrad Putra de S">
-               <font>
-                  <Font name="Lucida Fax Demibold Italic" size="14.0" />
-               </font>
-            </TextArea>
-            <TextField alignment="TOP_CENTER" layoutX="10.0" layoutY="297.0" prefHeight="13.0" prefWidth="154.0" text="Kelompok RPL Go!">
+            <TextField alignment="TOP_CENTER" layoutX="6.0" layoutY="318.0" prefHeight="13.0" prefWidth="154.0" text="Kelompok RPL Go!">
                <font>
                   <Font name="Lato Bold Italic" size="17.0" />
                </font>
             </TextField>
-            <TextField layoutX="509.0" layoutY="374.0" prefHeight="25.0" prefWidth="130.0" text="Hadir Go! Project v1.0" />
-            <Button layoutX="509.0" layoutY="323.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="66.0" text="Login" />
+            <ImageView fitHeight="239.0" fitWidth="272.0" layoutX="323.0" layoutY="99.0" preserveRatio="true">
+               <image>
+                  <Image url="@hadirgo!.png" />
+               </image>
+            </ImageView>
+            <TextArea layoutX="6.0" layoutY="356.0" prefHeight="64.0" prefWidth="316.0" promptText="adeqe" text="71180284 / Akira Rafhael Janson P&#10;71180276 / David Setiawan Widodo&#10;71180266 / Charles Condrad Putra de S">
+               <font>
+                  <Font name="Lucida Fax Demibold Italic" size="14.0" />
+               </font>
+            </TextArea>
+            <Text layoutX="422.0" layoutY="418.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hadir Go! Project v.1.0" wrappingWidth="213.908203125">
+               <font>
+                  <Font name="Courier New Italic" size="15.0" />
+               </font>
+            </Text>
+            <Button fx:id="login" layoutX="415.0" layoutY="308.0" mnemonicParsing="false" onAction="#switchToLogin" prefHeight="25.0" prefWidth="100.0" text="Start Now" textOverrun="WORD_ELLIPSIS" />
       </children>
     </AnchorPane>
   </children>
 </VBox>
+
