@@ -1,15 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.Group?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.TextArea?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
-<?import javafx.scene.control.*?>
 
 <VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.hadirgo.Home">
   <children>
@@ -20,29 +18,37 @@
                   <Image url="@image(1).png" />
                </image>
             </ImageView>
-            <TextField alignment="TOP_CENTER" layoutX="6.0" layoutY="318.0" prefHeight="13.0" prefWidth="154.0" text="Kelompok RPL Go!">
-               <font>
-                  <Font name="Lato Bold Italic" size="17.0" />
-               </font>
-            </TextField>
             <ImageView fitHeight="239.0" fitWidth="272.0" layoutX="323.0" layoutY="99.0" preserveRatio="true">
                <image>
                   <Image url="@hadirgo!.png" />
                </image>
             </ImageView>
-            <TextArea layoutX="6.0" layoutY="356.0" prefHeight="64.0" prefWidth="316.0" promptText="adeqe" text="71180284 / Akira Rafhael Janson P&#10;71180276 / David Setiawan Widodo&#10;71180266 / Charles Condrad Putra de S">
-               <font>
-                  <Font name="Lucida Fax Demibold Italic" size="14.0" />
-               </font>
-            </TextArea>
             <Text layoutX="422.0" layoutY="418.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hadir Go! Project v.1.0" wrappingWidth="213.908203125">
                <font>
                   <Font name="Courier New Italic" size="15.0" />
                </font>
             </Text>
             <Button fx:id="login" layoutX="415.0" layoutY="308.0" mnemonicParsing="false" onAction="#switchToLogin" prefHeight="25.0" prefWidth="100.0" text="Start Now" textOverrun="WORD_ELLIPSIS" />
+            <Group layoutX="6.0" layoutY="322.0">
+               <children>
+                  <ImageView fitHeight="33.0" fitWidth="141.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@putih.PNG" />
+                     </image>
+                  </ImageView>
+                  <Text layoutX="1.0" layoutY="25.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Kelompok RPL Go!">
+                     <font>
+                        <Font name="Lato Bold Italic" size="17.0" />
+                     </font>
+                  </Text>
+               </children>
+            </Group>
+            <ImageView fitHeight="78.0" fitWidth="345.0" layoutX="6.0" layoutY="364.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@namateam.PNG" />
+               </image>
+            </ImageView>
       </children>
     </AnchorPane>
   </children>
 </VBox>
-

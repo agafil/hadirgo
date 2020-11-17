@@ -16,10 +16,10 @@ import javafx.scene.control.Alert.*;
 import javafx.scene.control.TextField;
 import java.lang.reflect.Method;
 
-public class MenuLogin{
-    private String user;
+public class MenuLogin {
+    private String usr;
     private String pwd;
-    private boolean status;
+    private boolean status = false;
     
     @FXML
     private TextField username;
@@ -33,12 +33,12 @@ public class MenuLogin{
     */
     @FXML
     private void cekLogin(ActionEvent event) throws IOException{
-        user = username.getText();
+        usr = username.getText();
         pwd = password.getText();
-        status = HadirGoDb.validate(user, pwd);
+        status = HadirGoDb.validate(usr, pwd);
         
-        if(status){
-            App.setRoot(user);
+        if(status == true){
+            App.setRoot("user");
         }
         else{
             //System.out.println("User tidak ketemu!");
@@ -48,6 +48,10 @@ public class MenuLogin{
             alert.setContentText("User tidak ketemu!");
             alert.showAndWait();
         }
+    }
+    
+    public String getUsername(){
+        return this.usr;
     }
     /*
     private void registerUser(ActionEvent event) throws IOException{

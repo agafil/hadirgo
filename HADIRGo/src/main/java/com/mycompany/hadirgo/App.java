@@ -5,6 +5,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import javafx.scene.layout.StackPane;
+import javafx.scene.image.Image;
 
 import java.io.IOException;
 
@@ -17,6 +19,8 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
+        stage.getIcons().add(new Image(getClass().getResourceAsStream("hadirgo2.png")));
+        stage.setTitle("Hadir Go!");
         scene = new Scene(loadFXML("Home"), 640, 425);
         stage.setScene(scene);
         stage.show();

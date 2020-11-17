@@ -84,8 +84,8 @@ public class HadirGoDb {
                 
                 resultSet.close();
                 preparedStatement.close();
-                return false;
             }
+            return false;
         } catch(SQLException | ClassNotFoundException e){
             e.printStackTrace();
         }
