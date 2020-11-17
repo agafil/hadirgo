@@ -23,7 +23,7 @@ public class HadirGoDb {
     //1 = admin
     private static final String CREATE_TABLE_SQL = "CREATE TABLE IF NOT EXISTS account (\n"
                                                 + " id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,\n"
-                                                + " username TEXT NOT NULL UNIQUE,\n"
+                                                + " username TEXT NOT NULL,\n"
                                                 + " password TEXT NOT NULL,\n"
                                                 + " isAdmin BIT NOT NULL"
                                                 + ");";
@@ -31,7 +31,7 @@ public class HadirGoDb {
     //insert data dosen dan admin untuk login
     //username dan password akun dosen = dosen, dosen
     //akun admin = admin, admin 
-    private static final String INSERT_ACCOUNT_SQL = "INSERT INTO account (username, password)\n"
+    private static final String INSERT_ACCOUNT_SQL = "INSERT INTO account (username, password, isAdmin)\n"
                                                      + " VALUES('admin', 'admin', 1),"
                                                      + " ('dosen', 'dosen', 0);";
     
@@ -47,14 +47,12 @@ public class HadirGoDb {
     private static void createAndInsert(){
         try{
             Class.forName("org.sqlite.JDBC");
-            Connection conn = DriverManager.getConnection(URL);
-            Statement statement = conn.createStatement();
-            statement.execute(CREATE_TABLE_SQL);
-            statement.execute(INSERT_ACCOUNT_SQL);
-            isAccountInserted = true;
-            
-            statement.close();
-            conn.close();
+            try (Connection conn = DriverManager.getConnection(URL); Statement statement = conn.createStatement()) {
+                statement.execute(CREATE_TABLE_SQL);
+                statement.execute(INSERT_ACCOUNT_SQL);
+                isAccountInserted = true;
+                
+            }
         } catch(SQLException | ClassNotFoundException e){
             e.printStackTrace();
         }
@@ -69,16 +67,23 @@ public class HadirGoDb {
         try{
             //mengakses db
             Class.forName("org.sqlite.JDBC");
-            Connection conn = DriverManager.getConnection(URL);
-            
             //membuat preparedstatement untuk query validasi
-            PreparedStatement preparedStatement = conn.prepareStatement(VALIDATE_QUERY);
-            preparedStatement.setString(1, username);
-            preparedStatement.setString(2, password);
-            
-            ResultSet resultSet = preparedStatement.executeQuery();
-            if(resultSet.next()){
-                return true;
+            try (Connection conn = DriverManager.getConnection(URL)) {
+                //membuat preparedstatement untuk query validasi
+                PreparedStatement preparedStatement = conn.prepareStatement(VALIDATE_QUERY);
+                preparedStatement.setString(1, username);
+                preparedStatement.setString(2, password);
+                
+                ResultSet resultSet = preparedStatement.executeQuery();
+                if(resultSet.next()){
+                    resultSet.close();
+                    preparedStatement.close();
+                    conn.close();
+                    return true;
+                }
+                
+                resultSet.close();
+                preparedStatement.close();
             }
             return false;
         } catch(SQLException | ClassNotFoundException e){

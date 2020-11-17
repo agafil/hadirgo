@@ -35,10 +35,7 @@ public class MenuLogin extends HadirGoDb{
     private void cekLogin(ActionEvent event) throws IOException{
         user = username.getText();
         pwd = password.getText();
-        status = validate(user, pwd);
-        
-        HadirGoDb hdb = new HadirGoDb();
-        hdb.getClass();
+        status = HadirGoDb.validate(user, pwd);
         
         if(status){
             App.setRoot(user);
