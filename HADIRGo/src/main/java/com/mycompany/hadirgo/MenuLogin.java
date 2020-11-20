@@ -2,7 +2,6 @@ package com.mycompany.hadirgo;
 
 import javafx.fxml.FXML;
 import java.io.IOException;
-//import javafx.scene.image.ImageView;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -25,12 +24,6 @@ public class MenuLogin {
     private TextField username;
     @FXML
     private TextField password;
-    /*
-    @FXML
-    private void switchToPrimary() throws IOException {
-        App.setRoot("Home");
-    }
-    */
     @FXML
     private void cekLogin(ActionEvent event) throws IOException{
         usr = username.getText();
@@ -41,7 +34,6 @@ public class MenuLogin {
             App.setRoot("user");
         }
         else{
-            //System.out.println("User tidak ketemu!");
             Alert alert = new Alert(AlertType.ERROR);
             alert.setTitle("Error");
             alert.setHeaderText(null);
@@ -53,9 +45,4 @@ public class MenuLogin {
     public static String getUsername(){
         return usr;
     }
-    /*
-    private void registerUser(ActionEvent event) throws IOException{
-        
-    }
-    */
 }

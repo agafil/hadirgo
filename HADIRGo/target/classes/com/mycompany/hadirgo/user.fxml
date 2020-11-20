@@ -16,13 +16,6 @@
                   <Image url="@user-removebg-preview.png" />
                </image>
             </ImageView>
-            <!--
-            <Text fx:id="namauser" layoutX="214.0" layoutY="227.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" textAlignment="CENTER" wrappingWidth="211.9830722808838">
-               <font>
-                  <Font name="Arial Narrow Bold" size="19.0" />
-               </font>
-            </Text>
-            -->
             <Button fx:id="logout" layoutX="563.0" layoutY="354.0" mnemonicParsing="false" onAction="#backToWelcome" text="Log Out" />
             <AnchorPane layoutX="221.0" layoutY="218.0" prefHeight="25.0" prefWidth="200.0">
                <children>
