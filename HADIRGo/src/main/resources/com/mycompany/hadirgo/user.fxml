@@ -24,7 +24,11 @@
             </Text>
             -->
             <Button fx:id="logout" layoutX="563.0" layoutY="354.0" mnemonicParsing="false" onAction="#backToWelcome" text="Log Out" />
-            <Label fx:id="labeluser" layoutX="241.0" layoutY="242.0" prefHeight="32.0" prefWidth="163.0" textAlignment="CENTER" />
+            <AnchorPane layoutX="221.0" layoutY="218.0" prefHeight="25.0" prefWidth="200.0">
+               <children>
+                  <Label fx:id="labeluser" minHeight="16" prefHeight="25.0" prefWidth="200.0" textAlignment="RIGHT" textOverrun="CENTER_ELLIPSIS" />
+               </children>
+            </AnchorPane>
          </children>
       </AnchorPane>
    </children>

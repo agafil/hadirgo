@@ -11,20 +11,16 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
 import javafx.scene.control.Button;
-import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
-import com.mycompany.hadirgo.MenuLogin;
 import javafx.scene.control.Label;
-import javafx.scene.paint.Color;
-import javafx.scene.text.Font;
-import javafx.scene.text.*;
 
 /**
  *
  * @author Mocha-Chino
  */
-public class User implements Initializable {
+public class User {
     private String username;
     @FXML
     private AnchorPane register;
@@ -42,6 +38,7 @@ public class User implements Initializable {
     @FXML
     private TextField namauserpakai;
     */
+    
     @FXML
     private Label labeluser;
     
@@ -66,8 +63,11 @@ public class User implements Initializable {
         username = ml.getUsername();
     }
     
+    /**
+     *
+     */
     @FXML
-    public void initialize() {
+    public void initialize(){
         /*
         Text currentuser = new Text();
         currentuser.setText("admin");
@@ -77,12 +77,14 @@ public class User implements Initializable {
         currentuser.setStrokeWidth(2);
         currentuser.setStroke(Color.BLUE);
         */
-        labeluser.setText("admin");
-    }
-    
+        username = ml.getUsername();
+        //labeluser.setAlignment(Pos.CENTER_RIGHT);
+        labeluser.setText(MenuLogin.getUsername());
+    }    
+    /*
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
+    */
 }

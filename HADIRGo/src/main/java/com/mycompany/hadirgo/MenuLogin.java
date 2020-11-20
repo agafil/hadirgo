@@ -17,7 +17,7 @@ import javafx.scene.control.TextField;
 import java.lang.reflect.Method;
 
 public class MenuLogin {
-    private String usr;
+    private static String usr;
     private String pwd;
     private boolean status = false;
     
@@ -50,8 +50,8 @@ public class MenuLogin {
         }
     }
     
-    public String getUsername(){
-        return this.usr;
+    public static String getUsername(){
+        return usr;
     }
     /*
     private void registerUser(ActionEvent event) throws IOException{
