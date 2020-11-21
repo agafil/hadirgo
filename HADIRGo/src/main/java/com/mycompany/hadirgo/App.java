@@ -5,7 +5,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import javafx.scene.layout.StackPane;
 import javafx.scene.image.Image;
 
 import java.io.IOException;
