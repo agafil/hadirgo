@@ -9,6 +9,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
+import com.jfoenix.controls.JFXButton;
 
 public class Home implements Initializable {
     /*
@@ -20,12 +21,14 @@ public class Home implements Initializable {
     @FXML
     private AnchorPane home;
     @FXML
-    private Button login;
+    private Button sign;
+    @FXML
+    private JFXButton signInbtn;
    
     @FXML
-    private void switchToLogin(ActionEvent event) throws IOException {
+    private void switchToUser(ActionEvent event) throws IOException {
         //JButton login = new JButton;
-        App.setRoot("FormLogin");
+        App.setRoot("user");
     }
     
     
