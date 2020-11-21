@@ -1,4 +1,8 @@
-
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package com.mycompany.hadirgo;
 
 import java.sql.Connection;
@@ -8,6 +12,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+/**
+ *
+ * @author Akira Rafhael
+ */
 public class KelasDb {
     private static final String URL = "jdbc:sqlite:admin.db";
     
@@ -32,8 +40,11 @@ public class KelasDb {
         String sql = "INSERT INTO kelas (kodeKelas, namaKelas, jam, menit, dosen) \n"
                     + "VALUES(?, ?, ?, ?, ?);";
         try{
+            //mengakses db
             Class.forName("org.sqlite.JDBC");
+            //membuat preparedstatement untuk query validasi
             try (Connection conn = DriverManager.getConnection(URL)) {
+                //membuat preparedstatement untuk query validasi
                 if(!isDataExist){
                     buatTabelAwalan(conn);
                 }
@@ -64,8 +75,11 @@ public class KelasDb {
                 + "WHERE kodeKelas = ?;";
         
         try{
+            //mengakses db
             Class.forName("org.sqlite.JDBC");
+            //membuat preparedstatement untuk query validasi
             try (Connection conn = DriverManager.getConnection(URL)) {
+                //membuat preparedstatement untuk query validasi
                 PreparedStatement preparedStatement = conn.prepareStatement(sql);
                 preparedStatement.setString(1, kodeKelasBaru);
                 preparedStatement.setString(2, namaKelas);
@@ -86,9 +100,11 @@ public class KelasDb {
     public static void deleteKelas(String kodeKelas){
         String sql = "DELETE FROM kelas where kodeKelas = ?;";
         try{
+            //mengakses db
             Class.forName("org.sqlite.JDBC");
-            
+            //membuat preparedstatement untuk query validasi
             try (Connection conn = DriverManager.getConnection(URL)) {
+                //membuat preparedstatement untuk query validasi
                 PreparedStatement preparedStatement = conn.prepareStatement(sql);
                 preparedStatement.setString(1, kodeKelas);
                 

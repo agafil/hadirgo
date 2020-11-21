@@ -6,7 +6,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.PreparedStatement;
-import java.util.ArrayList;
 
 public class HadirGoDb {
     //db dibuat dalam fungsi createAndInsert() secara otomatis
@@ -45,7 +44,7 @@ public class HadirGoDb {
     private static boolean isAccountInserted = false;
     
     //membuat admin.db dan akun dosen dan admin
-    private static void createInitDb(){
+    private static void createAndInsert(){
         try{
             Class.forName("org.sqlite.JDBC");
             try (Connection conn = DriverManager.getConnection(URL); Statement statement = conn.createStatement()) {
@@ -60,30 +59,10 @@ public class HadirGoDb {
         }
     }
     
-    //untuk saat ini akun baru yang dibuat hanya akun dengan role dosen
-    public static void createNewAccount(String username, String password){
-        String sql = "INSERT INTO account (username, password, isAdmin) VALUES(?, ?, 0)";
-        
-        try {
-            Class.forName("org.sqlite.JDBC");
-            try (Connection conn = DriverManager.getConnection(URL)){
-                PreparedStatement stmt = conn.prepareStatement(sql);
-                stmt.setString(1, username);
-                stmt.setString(2, password);
-                stmt.execute(sql);
-                
-                stmt.close();
-                conn.close();
-            }
-        } catch(SQLException | ClassNotFoundException e){
-            e.printStackTrace();
-        }
-    }
-    
     //fungsi untuk validasi login
     public static boolean validate(String username, String password){
         if(!isAccountInserted){
-            createInitDb();
+            createAndInsert();
         }
         
         try{
@@ -143,67 +122,5 @@ public class HadirGoDb {
             e.printStackTrace();
         }
         return false;
-    }
-    
-    //self explanatory
-    public static void editPassword(String username, String newPassword){
-        String sql = "UPDATE account SET password = ? WHERE username = ?;";
-        
-        try {
-            Class.forName("org.sqlite.JDBC");
-            try(Connection conn = DriverManager.getConnection(URL)) {
-                PreparedStatement preparedStatement = conn.prepareStatement(sql);
-                preparedStatement.setString(1, newPassword);
-                preparedStatement.setString(2, username);
-                preparedStatement.executeUpdate();
-                
-                preparedStatement.close();
-                conn.close();
-            } 
-        } catch (SQLException | ClassNotFoundException e) {
-            e.printStackTrace();
-        }
-    }
-    
-    public static void deleteAccount(String username){
-        String sql = "DELETE from account where username = ?";
-        try {
-            Class.forName("org.sqlite.JDBC");
-            try(Connection conn = DriverManager.getConnection(URL)) {
-                PreparedStatement preparedStatement = conn.prepareStatement(sql);
-                preparedStatement.setString(1, username);
-                preparedStatement.executeUpdate();
-                
-                preparedStatement.close();
-                conn.close();
-            } 
-        } catch (SQLException | ClassNotFoundException e) {
-            e.printStackTrace();
-        }
-    }
-    
-    //fungsi untuk mendapatkan semua akun yang ada dalam database selain akun admin
-    //untuk melakukan fungsi tambah, edit, hapus akun dosen
-    public static ArrayList<String> getAllAccount(){
-        var akun = new ArrayList<String>();
-        String sql = "SELECT * FROM account";
-        
-        try {
-            Class.forName("org.sqlite.JDBC");
-            try (Connection conn = DriverManager.getConnection(URL)){
-                Statement stmt = conn.createStatement();
-                ResultSet rst = stmt.executeQuery(sql);
-                
-                while(rst.next()){
-                    
-                    if(rst.getByte("isAdmin") == 0)
-                        akun.add(rst.getString("username"));
-                }
-            } 
-        } catch (SQLException | ClassNotFoundException e) {
-            e.printStackTrace();
-        }
-        
-        return akun;
     }
 }
