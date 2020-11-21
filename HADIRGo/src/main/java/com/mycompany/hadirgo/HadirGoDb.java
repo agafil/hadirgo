@@ -95,6 +95,7 @@ public class HadirGoDb {
         return false;
     }
     
+
     //fungsi untuk mengecek akun apakah admin atau dosen
     public static boolean isAdmin(String username){
         try {
