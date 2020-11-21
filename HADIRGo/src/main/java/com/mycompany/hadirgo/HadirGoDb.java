@@ -23,7 +23,7 @@ public class HadirGoDb {
                                                 + " isAdmin BIT NOT NULL"
                                                 + ");";
     
-    //insert data dosen dan admin untuk login
+    //insert data dosen dan admin untuk login pertama kali
     //username dan password akun dosen = dosen, dosen
     //akun admin = admin, admin 
     private static final String INSERT_ACCOUNT_SQL = "INSERT INTO account (username, password, isAdmin)\n"
@@ -33,6 +33,11 @@ public class HadirGoDb {
     //query untuk validasi akun waktu login di fungsi validate()
     private static final String VALIDATE_QUERY = "SELECT * FROM account WHERE \n"
                                                   + "  username = ? AND password = ?;";
+    
+    //query untuk mencari akun dalam db untuk keperluan 
+    //cek akun apakah admin atau dosen
+    private static final String SEARCH_QUERY = "SELECT * FROM account WHERE \n"
+                                                  + "  username = ?";
     
     //state untuk mengecek apakah db sudah dibuat dengan akun admin dan dosen
     //true jika telah dibuat dengan fungsi createAndInsert()
@@ -46,7 +51,8 @@ public class HadirGoDb {
                 statement.execute(CREATE_TABLE_SQL);
                 statement.execute(INSERT_ACCOUNT_SQL);
                 isAccountInserted = true;
-                
+                statement.close();
+                conn.close();
             }
         } catch(SQLException | ClassNotFoundException e){
             e.printStackTrace();
@@ -79,12 +85,41 @@ public class HadirGoDb {
                 
                 resultSet.close();
                 preparedStatement.close();
+                conn.close();
             }
             return false;
         } catch(SQLException | ClassNotFoundException e){
             e.printStackTrace();
         }
         
+        return false;
+    }
+    
+    //fungsi untuk mengecek akun apakah admin atau dosen
+    public static boolean isAdmin(String username){
+        try {
+            Class.forName("org.sqlite.JDBC");
+            try(Connection conn = DriverManager.getConnection(URL)) {
+                PreparedStatement preparedStatement = conn.prepareStatement(SEARCH_QUERY);
+                preparedStatement.setString(1, username);
+
+                ResultSet resultSet = preparedStatement.executeQuery();
+
+                if(resultSet.getInt("isAdmin") == 1){
+                    resultSet.close();
+                    preparedStatement.close();
+                    conn.close();
+                    return true;
+                }
+                
+                resultSet.close();
+                preparedStatement.close();
+                conn.close();
+                return false;
+            } 
+        } catch (SQLException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
         return false;
     }
 }
