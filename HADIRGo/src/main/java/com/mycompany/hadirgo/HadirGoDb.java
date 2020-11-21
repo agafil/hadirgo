@@ -87,4 +87,8 @@ public class HadirGoDb {
         
         return false;
     }
+    
+    public static void cekRole(){
+        
+    }
 }

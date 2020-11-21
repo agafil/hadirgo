@@ -2,18 +2,10 @@ package com.mycompany.hadirgo;
 
 import javafx.fxml.FXML;
 import java.io.IOException;
-import java.net.URL;
-import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
-import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.layout.AnchorPane;
-import static com.mycompany.hadirgo.HadirGoDb.*;
-import java.lang.ProcessBuilder.Redirect.Type;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.*;
 import javafx.scene.control.TextField;
-import java.lang.reflect.Method;
 
 public class MenuLogin {
     private static String usr;

@@ -13,8 +13,7 @@
          <children>
             <TextField fx:id="username" layoutX="41.0" layoutY="41.0" promptText="Username" style="-fx-background-color: #ffffff;" />
             <PasswordField fx:id="password" layoutX="41.0" layoutY="104.0" promptText="Password" style="-fx-background-color: #ffffff;" />
-            <Button layoutX="41.0" layoutY="179.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="65.0" onAction="#cekLogin" text="Login" />
-            <Button layoutX="128.0" layoutY="179.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="65.0" text="Register" />
+            <Button layoutX="84.0" layoutY="174.0" mnemonicParsing="false" onAction="#cekLogin" prefHeight="32.0" prefWidth="65.0" text="Login" />
          </children>
       </AnchorPane>
       <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="69.0" layoutY="115.0" pickOnBounds="true" preserveRatio="true">
