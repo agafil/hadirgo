@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 com\mycompany\hadirgo\MenuLogin.class
 com\mycompany\hadirgo\KelasDb.class
 com\mycompany\hadirgo\App.class
@@ -6,3 +7,5 @@ module-info.class
 com\mycompany\hadirgo\Home.class
 com\mycompany\hadirgo\DetailKelasController.class
 com\mycompany\hadirgo\HadirGoDb.class
+=======
+>>>>>>> Stashed changes
