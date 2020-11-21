@@ -1,5 +1,4 @@
 package com.mycompany.hadirgo;
-
 import java.io.IOException;
 //import javafx.scene.image.ImageView;
 import java.net.URL;
@@ -9,26 +8,25 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
+import com.jfoenix.controls.JFXButton;
 
 public class Home implements Initializable {
-    /*
-    @FXML
-    private login;
-    */
-    @FXML
-    private AnchorPane register;
+    
     @FXML
     private AnchorPane home;
+    
     @FXML
-    private Button login;
-   
+    private JFXButton signInbtn;
+
     @FXML
-    private void switchToLogin(ActionEvent event) throws IOException {
+    //private void switchToLogin(ActionEvent event) throws IOException {
+    private void switchToUser(ActionEvent event) throws IOException {
         //JButton login = new JButton;
-        App.setRoot("FormLogin");
+        //App.setRoot("FormLogin");
+        App.setRoot("user");
     }
-    
-    
+
+
     /*
     @FXML
     private void handleButtonAction(MouseEvent event){
