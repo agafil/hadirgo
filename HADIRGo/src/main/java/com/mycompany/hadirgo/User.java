@@ -16,6 +16,11 @@ public class User {
     private void moveToDetailKelas() throws IOException{
         App.setRoot("DetailKelas");
     }
+    
+    @FXML
+    private void kesinilo() throws IOException{
+        App.setRoot("UbahPassword");
+    }
     @FXML
     public void initialize(){
         labeluser.setText(MenuLogin.getUsername());
