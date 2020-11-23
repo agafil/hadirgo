@@ -1,4 +1,6 @@
+com\mycompany\hadirgo\MenuLogin.class
 com\mycompany\hadirgo\App.class
-com\mycompany\hadirgo\SecondaryController.class
+com\mycompany\hadirgo\User.class
 module-info.class
-com\mycompany\hadirgo\PrimaryController.class
+com\mycompany\hadirgo\Home.class
+com\mycompany\hadirgo\HadirGoDb.class
